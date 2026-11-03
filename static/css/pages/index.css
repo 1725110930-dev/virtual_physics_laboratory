@@ -1,0 +1,89 @@
+
+/* =================================
+   CONTENEDOR PRINCIPAL
+================================= */
+
+.page-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+
+/* =================================
+   ENCABEZADO
+================================= */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px 30px;
+
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+}
+
+
+/* =================================
+   PRESENTACIÓN
+================================= */
+
+.main-content {
+    margin-top: 40px;
+}
+
+.hero {
+    max-width: 750px;
+    margin-bottom: 40px;
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 20px;
+}
+
+.hero p {
+    max-width: 600px;
+    font-size: 1.1rem;
+}
+
+
+/* =================================
+   SIMULACIÓN
+================================= */
+
+.simulation-section {
+    margin-top: 30px;
+}
+
+.simulation-header {
+    margin-bottom: 15px;
+}
+
+.container-simulation {
+    width: 100%;
+    min-height: 400px;
+
+    padding: 20px;
+
+    background-color: var(--color-lab-background);
+    border-radius: var(--radius-lg);
+}
+
+
+/* =================================
+   PIE DE PÁGINA
+================================= */
+
+.footer {
+    margin-top: 35px;
+    padding: 20px;
+
+    text-align: center;
+    border-top: 1px solid var(--color-border);
+}
+

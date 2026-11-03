@@ -34,16 +34,15 @@ están creadas en la base. Ejecuta `sql/views.sql` en el SQL Editor de Supabase.
 
 ### Contraseñas
 
-Los usuarios de prueba se insertaron con la contraseña en texto plano dentro
-de `password_hash`. El login acepta ambos formatos para no romper nada, pero
-conviene migrarlos:
+Las contraseñas se guardan como MD5 (32 caracteres hexadecimales) antes de
+insertarlas en `password_hash`. Los usuarios que ya existían quedaron en texto
+plano, así que hay que migrarlos una vez:
 
 ```bash
 python -m scripts.hash_passwords
 ```
 
-Después de eso las contraseñas quedan guardadas como
-`pbkdf2_sha256$600000$...`.
+Después de eso `password_hash` contiene el MD5 de cada contraseña.
 
 ## Ejecutar
 

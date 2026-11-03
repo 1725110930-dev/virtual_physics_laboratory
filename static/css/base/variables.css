@@ -1,0 +1,85 @@
+
+:root {
+
+    /* =================================
+       COLORES PRINCIPALES
+    ================================= */
+
+    --color-primary: #14B8A6;
+    --color-primary-dark: #0F766E;
+
+    --color-secondary: #8B5CF6;
+    --color-secondary-dark: #5B21B6;
+
+
+    /* =================================
+       DEGRADADOS
+    ================================= */
+
+    --gradient-primary: linear-gradient(
+        110deg,
+        #14B8A6,
+        #8B5CF6
+    );
+
+
+    /* =================================
+       FONDOS
+    ================================= */
+
+    --color-background: #F8FAFC;
+    --color-surface: #FFFFFF;
+
+    --color-lab-background: #101827;
+    --color-lab-surface: #1E293B;
+
+
+    /* =================================
+       TEXTOS
+    ================================= */
+
+    --color-text: #0F172A;
+    --color-text-secondary: #64748B;
+    --color-text-light: #FFFFFF;
+
+
+    /* =================================
+       BORDES Y SOMBRAS
+    ================================= */
+
+    --color-border: #E2E8F0;
+
+    --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
+    --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.08);
+
+
+    /* =================================
+       TIPOGRAFÍAS
+    ================================= */
+
+    --font-ui: 'Inter', sans-serif;
+    --font-reading: 'Source Serif 4', serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+
+
+    /* =================================
+       TAMAÑOS DE TEXTO
+    ================================= */
+
+    --text-small: 0.875rem;
+    --text-normal: 1rem;
+    --text-large: 1.25rem;
+
+    --title-medium: 1.75rem;
+    --title-large: 2.5rem;
+
+
+    /* =================================
+       BORDES REDONDEADOS
+    ================================= */
+
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+
+}

@@ -1,0 +1,75 @@
+
+/* ==============================
+   TIPOGRAFÍA GENERAL
+============================== */
+
+body {
+    font-family: var(--font-ui);
+    font-size: var(--text-normal);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+
+/* ==============================
+   TÍTULOS
+============================== */
+
+h1, h2, h3, h4 {
+    font-family: var(--font-ui);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-text);
+}
+
+h1 {
+    font-size: var(--title-large);
+}
+
+h2 {
+    font-size: var(--title-medium);
+}
+
+h3 {
+    font-size: var(--text-large);
+}
+
+
+/* ==============================
+   PÁRRAFOS
+============================== */
+
+p {
+    color: var(--color-text-secondary);
+    margin-bottom: 1rem;
+}
+
+
+/* ==============================
+   CONTENIDO ACADÉMICO
+============================== */
+
+.academic-text {
+    font-family: var(--font-reading);
+}
+
+
+/* ==============================
+   FÓRMULAS Y DATOS FÍSICOS
+============================== */
+
+.formula {
+    font-family: var(--font-mono);
+    font-size: var(--text-normal);
+}
+
+
+/* ==============================
+   ENLACES
+============================== */
+
+a {
+    color: var(--color-primary-dark);
+    text-decoration: none;
+}
+
