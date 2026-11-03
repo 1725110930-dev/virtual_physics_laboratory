@@ -1,0 +1,62 @@
+$def with (full_name, username, role, groups, error=None)
+<h2>Panel de control</h2>
+
+$if error:
+  <p style="color: red;">$error</p>
+
+<p>
+  Bienvenido, <strong>$full_name</strong>
+  <span>(@$username · $role)</span>
+</p>
+
+$if role == 'Estudiante':
+  <h3>Mis grupos</h3>
+  $if groups:
+    <table border="1" cellpadding="6">
+      <thead>
+        <tr>
+          <th>Grupo</th>
+          <th>Carrera</th>
+          <th>Profesor</th>
+        </tr>
+      </thead>
+      <tbody>
+        $for group in groups:
+          <tr>
+            <td>$group['group_name']</td>
+            <td>$group['degree_program']</td>
+            <td>$group['professor_name']</td>
+          </tr>
+      </tbody>
+    </table>
+  $else:
+    <p>Todavía no estás inscrito en ningún grupo.</p>
+
+$elif role == 'Profesor':
+  <h3>Grupos que imparto</h3>
+  $if groups:
+    <table border="1" cellpadding="6">
+      <thead>
+        <tr>
+          <th>Grupo</th>
+          <th>Carrera</th>
+          <th>Código de acceso</th>
+          <th>Alumnos</th>
+        </tr>
+      </thead>
+      <tbody>
+        $for group in groups:
+          <tr>
+            <td>$group['group_name']</td>
+            <td>$group['degree_program']</td>
+            <td><code>$group['access_code']</code></td>
+            <td>$group['student_count']</td>
+          </tr>
+      </tbody>
+    </table>
+  $else:
+    <p>No tienes grupos creados.</p>
+
+<p>Aquí irá el laboratorio: simulaciones, ranking y logros.</p>
+
+<p><a href="/logout">Cerrar sesión</a></p>
