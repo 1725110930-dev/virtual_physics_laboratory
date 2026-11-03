@@ -805,9 +805,17 @@
     world = null;
   }
 
-  async function boot() {
+ async function boot() {
     if (document.body.dataset.tomatoGame === 'ready') return;
     document.body.dataset.tomatoGame = 'loading';
+
+    const container = document.querySelector('.container-simulation');
+
+    if (!container) {
+        console.error('No se encontró el contenedor de la simulación.');
+        document.body.dataset.tomatoGame = 'error';
+        return;
+    }
 
     if (typeof PIXI === 'undefined' || typeof Matter === 'undefined') {
       showError('No se pudieron cargar PixiJS o Matter.js desde el CDN.');
@@ -816,53 +824,60 @@
     }
 
     try {
-      app = new PIXI.Application();
-      await app.init({
-        resizeTo: window,
-        antialias: true,
-        backgroundAlpha: 0,
-        resolution: Math.min(window.devicePixelRatio || 1, 2),
-        autoDensity: true,
-        powerPreference: 'high-performance',
-      });
+      
+        app = new PIXI.Application();
 
-      app.canvas.setAttribute('aria-label', 'Juego de tiro al blanco con cañón lanzatomates');
-      document.body.appendChild(app.canvas);
+        await app.init({
+            resizeTo: container,
+            antialias: true,
+            backgroundAlpha: 0,
+            resolution: Math.min(window.devicePixelRatio || 1, 2),
+            autoDensity: true,
+            powerPreference: 'high-performance',
+        });
 
-      scene = new PIXI.Container();
-      app.stage.addChild(scene);
+        app.canvas.setAttribute(
+            'aria-label',
+            'Juego de tiro al blanco con cañón lanzatomates'
+        );
 
-      resizeScene();
-      resizeHandler = resizeScene;
-      window.addEventListener('resize', resizeHandler);
+        container.appendChild(app.canvas);
 
-      textures = await loadAssets();
-      createPhysics();
-      createTarget();
-      createCannon();
 
-      projectileLayer = new PIXI.Container();
-      scene.addChild(projectileLayer);
+        scene = new PIXI.Container();
+        app.stage.addChild(scene);
 
-      createUI();
+        resizeScene();
+        resizeHandler = resizeScene;
+        window.addEventListener('resize', resizeHandler);
 
-      bindInput();
-      updateUI();
-      setElevation(CANNON.defaultElevation);
+        textures = await loadAssets();
+        createPhysics();
+        createTarget();
+        createCannon();
 
-      tickHandler = tick;
-      app.ticker.add(tickHandler);
+        projectileLayer = new PIXI.Container();
+        scene.addChild(projectileLayer);
 
-      state.ready = true;
-      document.body.dataset.tomatoGame = 'ready';
-      exposeDebugApi();
+        createUI();
 
-      window.addEventListener('pagehide', cleanup, { once: true });
-      console.log('Cañón lanzatomates listo. PixiJS', PIXI.VERSION, '· Matter.js', Matter.version);
+        bindInput();
+        updateUI();
+        setElevation(CANNON.defaultElevation);
+
+        tickHandler = tick;
+        app.ticker.add(tickHandler);
+
+        state.ready = true;
+        document.body.dataset.tomatoGame = 'ready';
+        exposeDebugApi();
+
+        window.addEventListener('pagehide', cleanup, { once: true });
+        console.log('Cañón lanzatomates listo. PixiJS', PIXI.VERSION, '· Matter.js', Matter.version);
     } catch (error) {
-      console.error('Error al iniciar el juego:', error);
-      showError(error instanceof Error ? error.message : String(error));
-      document.body.dataset.tomatoGame = 'error';
+        console.error('Error al iniciar el juego:', error);
+        showError(error instanceof Error ? error.message : String(error));
+        document.body.dataset.tomatoGame = 'error';
     }
   }
 
